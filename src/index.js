@@ -13,3 +13,8 @@ root.render(
         </Provider>
     </React.StrictMode>
 );
+
+const CardBox = styled.div`
+  background-color: red;
+  color: black;
+`;
