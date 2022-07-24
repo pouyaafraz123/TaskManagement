@@ -70,6 +70,17 @@ const DivContainer = styled.div`
   .input-group-text {
     border-radius: 12px 0 0 12px !important;
   }
+  
+  @media only screen and (max-width: 768px) {
+    button {
+      display: block;
+      width: 100%;
+    }
+    
+    .dropdown , .dropdown-menu {
+      width: 100%;
+    }
+  }
 `;
 
 export default Top;

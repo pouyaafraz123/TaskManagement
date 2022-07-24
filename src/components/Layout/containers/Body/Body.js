@@ -1,12 +1,12 @@
 import React from "react";
 import Top from './Top';
-import Main from './Main'
+import BodyContainer from './BodyContainer'
 
 const Body = () => {
     return (
         <>
             <Top/>
-            <Main/>
+            <BodyContainer/>
         </>
     );
 }
