@@ -7,7 +7,7 @@ import {useState} from "react";
 import {useNavigate} from "react-router";
 import {selected} from "../../features/SelectedBoard";
 
-const AddTaskGroup = (props) => {
+const AddTaskGroup = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const select = useSelector(selected);

@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {theme} from "../../../../features/ThemeSlice";
 
-const TaskContainer = () => {
+const TaskContainer = (props) => {
     const board = useSelector(boards);
     const select = useSelector(selected);
     const colors = useSelector(theme);
@@ -17,14 +17,14 @@ const TaskContainer = () => {
         <>
             <div className="container-fluid">
                 <div className="row">
-                    {renderGroups(board, select,colors)}
+                    {renderGroups(board, select,colors,props)}
                 </div>
             </div>
         </>
     );
 }
 
-const renderGroups = (board, select,colors) => {
+const renderGroups = (board, select,colors,props) => {
     if (!board || !board[select]) return;
     const groups = board[select];
     const Keys = Object.keys(groups);
@@ -32,7 +32,7 @@ const renderGroups = (board, select,colors) => {
         if (key === "name" || key === "id" || key === "boardId")
             return "";
         return (
-            <div className="col-lg-3 col-md-6 col-12 mb-3">
+            <div className="col-lg-3 col-md-6 col-12 mb-3" style={{zIndex:100}}>
                 <Card className="card border-0" style={{borderRadius: '15px'}} color={colors.ColorTop}>
                     <Card className="card-header border-0" style={{borderRadius: '15px 15px 0 0'}} color={colors.ColorTop}>
                         <div className="d-flex align-items-center justify-content-between">
@@ -50,7 +50,7 @@ const renderGroups = (board, select,colors) => {
                         </div>
                     </Card>
                     <div className="card-body">
-                        <Task groupId={key}/>
+                        <Task groupId={key} s={props.s}/>
                     </div>
                 </Card>
             </div>

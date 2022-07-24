@@ -1,10 +1,10 @@
 import React from "react";
 import TaskContainer from "./TaskContainer";
 
-const BodyContainer = () => {
+const BodyContainer = (props) => {
     return(
         <>
-            <TaskContainer />
+            <TaskContainer s={props.s} />
         </>
     );
 }

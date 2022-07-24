@@ -8,7 +8,7 @@ import {boards} from "../../../../features/TasksSlice";
 import {Select, selected} from "../../../../features/SelectedBoard";
 import {Link} from "react-router-dom";
 
-const Top = () => {
+const Top = (props) => {
     const board = useSelector(boards);
     const select = useSelector(selected);
     const dispatch = useDispatch();
@@ -22,7 +22,8 @@ const Top = () => {
                                 <div className="input-group-text bg-transparent border-right-0"><SearchIcon/></div>
                             </div>
                             <input type="search" name="search" id="search" placeholder={"Search Items . . ."}
-                                   className="form-control border-left-0"/>
+                                   className="form-control border-left-0"
+                            onChange={(e)=>props.onSearchChange(e.target.value)}/>
                         </div>
                     </div>
                     <div

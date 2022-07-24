@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 import {boards} from "../../../../features/TasksSlice";
 import {selected} from "../../../../features/SelectedBoard";
 import {theme} from "../../../../features/ThemeSlice";
-
+import {motion} from "framer-motion";
 const Task = (props) => {
     const board = useSelector(boards);
     const select = useSelector(selected);
@@ -20,7 +20,21 @@ const Task = (props) => {
         }
 
         const task = board[select][props.groupId][item];
+        if (props.s||props.s!==""){
+            if(!task.text.includes(props.s)||!task.title.includes(props.s)){
+                return "";
+            }
+        }
         return (
+            <motion.div
+                drag
+                dragConstraints={{
+                    top: -5000,
+                    left: -5000,
+                    right: 5000,
+                    bottom: 5000,
+                }}
+            >
                 <div className="mb-3" style={
                     {
                         backgroundColor: colors.ColorPrimary,
@@ -59,6 +73,7 @@ const Task = (props) => {
                         </div>
                     </div>
                 </div>
+            </motion.div>
         );
     })
 }
