@@ -5,3 +5,5 @@ const App = ()=>{
 }
 
 const AppContainer = styled.div``;
+
+export default App;
