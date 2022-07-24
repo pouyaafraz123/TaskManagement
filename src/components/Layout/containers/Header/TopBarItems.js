@@ -5,11 +5,23 @@ import NewspaperIcon from '@mui/icons-material/Newspaper';
 import WatchLaterIcon from '@mui/icons-material/WatchLater';
 import styled from "styled-components";
 
-const TopBarItems = (props) => {
-    const items = [{icon: <FeedIcon/>, label: "Backlog"},
-        {icon: <DashboardIcon/>, label: "Board"},
-        {icon: <NewspaperIcon/>, label: "Feed"},
-        {icon: <WatchLaterIcon/>, label: "Reports"}];
+const TopBarItems = () => {
+    const items = [
+        {
+            icon: <FeedIcon/>,
+            label: "Backlog"
+        },
+        {
+            icon: <DashboardIcon/>,
+            label: "Board"
+        },
+        {
+            icon: <NewspaperIcon/>, label: "Feed"
+        },
+        {
+            icon: <WatchLaterIcon/>, label: "Reports"
+        }
+    ];
     return items.map((item) => {
         return (
             <>

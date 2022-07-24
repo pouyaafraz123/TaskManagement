@@ -62,5 +62,5 @@ const Save = (boards) => {
     localStorage.setItem("board",boards);
 }
 
-export const boards = (state) => state.tasks.taskBoard;
+export const boards = (state) => state.boards.taskBoard;
 export default TasksSlice.reducer;

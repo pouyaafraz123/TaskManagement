@@ -2,7 +2,7 @@ import React from 'react';
 import TopBarItems from "./TopBarItems";
 import styled from "styled-components";
 
-const TopBar = (props) => {
+const TopBar = () => {
     return (
         <>
             <TopBarContainer className="navbar navbar-expand-md navbar-dark">

@@ -3,8 +3,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import styled from "styled-components";
+import {useSelector} from "react-redux";
+import {boards} from "../../../../features/TasksSlice";
+import {useParams} from "react-router";
 
 const Top = () => {
+    const board = useSelector(boards);
+    const params = useParams();
+    console.log(params.id);
     return (
         <>
             <DivContainer className="container-fluid">
@@ -27,12 +33,12 @@ const Top = () => {
                         <div className="dropdown">
                             <button type="button" className="btn btn-light border-secondary text-muted dropdown-toggle"
                                     data-toggle="dropdown">
-                                Board
+                                Board{/* TODO OPEN WITH ROUT*/}
                             </button>
                             <div className="dropdown-menu dropdown-menu-right text-center">
-                                <a className="dropdown-item" href="#">Link 1</a>
-                                <a className="dropdown-item" href="#">Link 2</a>
-                                <a className="dropdown-item" href="#">Link 3</a>
+                                {renderBoards(board)}
+                                <a className="dropdown-item" href="#">
+                                    &#43; New Board</a>
                             </div>
                         </div>
                     </div>
@@ -40,6 +46,15 @@ const Top = () => {
             </DivContainer>
         </>
     );
+}
+
+const renderBoards = (board) => {
+    const keys = Object.keys(board);
+    return keys.map((item)=>{
+        return (
+            <a className="dropdown-item" href="#">board[item].name</a>
+        );
+    });
 }
 
 const DivContainer = styled.div`

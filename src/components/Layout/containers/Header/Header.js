@@ -2,7 +2,7 @@ import React from "react";
 import TopBar from "./TopBar";
 import Heading from "./Heading";
 
-const Header = (props) => {
+const Header = () => {
     return (
         <>
             <TopBar/>

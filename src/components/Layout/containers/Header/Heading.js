@@ -1,7 +1,7 @@
 import React from "react";
 import AddIcon from '@mui/icons-material/Add';
 
-const Heading = (props) => {
+const Heading = () => {
     return (
         <>
             <div className="container-fluid border-bottom border-secondary bg-light">
@@ -12,10 +12,11 @@ const Heading = (props) => {
                     </div>
                     <div className="d-flex flex-row align-items-center justify-content-center">
                         <div className="pr-4">
-                            <img src={require("../../../../img/peoplePIC.png")} alt="peoplePic" className="img-fluid" style={{width: '90px'}}/>
+                            <img src={require("../../../../img/peoplePIC.png")} alt="peoplePic" className="img-fluid"
+                                 style={{width: '90px'}}/>
                         </div>
                         <div className="d-flex align-items-center border-left pl-4">
-                            <a href="src/components/Layout/containers/Header/Header#" className="text-decoration-none"><AddIcon/> New Member</a>
+                            <a href="#" className="text-decoration-none"><AddIcon/> New Member</a>
                         </div>
                     </div>
                 </div>

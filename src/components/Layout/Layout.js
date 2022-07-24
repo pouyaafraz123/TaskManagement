@@ -1,12 +1,23 @@
 import React from "react";
 import Header from "./containers/Header/Header";
 import Body from "./containers/Body/Body";
+import {BrowserRouter} from "react-router-dom";
+import {Route, Routes} from "react-router";
+import AddBoardPage from "../pages/AddBoardPage";
 
-const Layout = (props) => {
+const Layout = () => {
+
     return (
         <>
-            <Header/>
-            <Body/>
+
+            <BrowserRouter>
+                <Header/>
+                <Routes>
+                    <Route element={<Body/>} path={"/"}/>
+                    <Route element={<AddBoardPage/>} path={"/add-board"}/>
+                </Routes>
+            </BrowserRouter>
+
         </>
     );
 }
