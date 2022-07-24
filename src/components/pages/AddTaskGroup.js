@@ -1,52 +1,39 @@
 import styled from "styled-components";
 import {Button, TextField} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {CreateTask} from "../../features/TasksSlice";
+import {CreateTaskGroup} from "../../features/TasksSlice";
 import {v4 as uuid} from "uuid";
 import {useState} from "react";
-import {useNavigate, useParams} from "react-router";
+import {useNavigate} from "react-router";
 import {selected} from "../../features/SelectedBoard";
 
-const AddTask = () => {
+const AddTaskGroup = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const select = useSelector(selected);
-    const [title, setTitle] = useState("");
-    const [text, setText] = useState("");
-    const params = useParams();
+    const [value, setValue] = useState("");
     return (
         <PageBack>
             <PageContent>
                 <TitleContainer>
-                    <Title>Create New Task</Title>
+                    <Title>Create New Task Group</Title>
                 </TitleContainer>
                 <FormInput>
                     <TextField
                         id="outlined-basic"
-                        label="Title:"
+                        label="Name:"
                         variant="outlined"
                         className={"inputs"}
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}/>
-                    <TextField
-                        id="outlined-multiline-flexible"
-                        multiline
-                        maxRows={4}
-                        label="Text:"
-                        variant="outlined"
-                        className={"inputs"}
-                        value={text}
-                        onChange={(e) => setText(e.target.value)}/>
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}/>
                     <Button variant="outlined" onClick={() => {
-                        dispatch(CreateTask(
+                        dispatch(CreateTaskGroup(
                             {
                                 boardId: select,
-                                groupId: params.id,
-                                id:uuid(),
-                                title: title,
-                                text:text
-                            }));
+                                id: uuid(),
+                                name: value}));
                         navigate("/", {replace: false});
+                        console.log(1)
                     }}>Create</Button>
                 </FormInput>
             </PageContent>
@@ -98,8 +85,7 @@ const FormInput = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  gap: 20px;
+  justify-content: center;
   margin-top: 50px;
   align-items: center;
 
@@ -114,10 +100,10 @@ const FormInput = styled.form`
 
   button {
     width: 80%;
+    margin-top: 30px;
+    margin-bottom: 50px;
     height: 50px;
     font-weight: bold;
-    margin-bottom: 50px;
-    border-radius: 10px;
   }
 
 
@@ -125,4 +111,4 @@ const FormInput = styled.form`
 
 `;
 
-export default AddTask;
+export default AddTaskGroup;

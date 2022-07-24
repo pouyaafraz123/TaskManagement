@@ -1,10 +1,14 @@
 import React from "react";
 import AddIcon from '@mui/icons-material/Add';
+import styled from "styled-components";
+import {useSelector} from "react-redux";
+import {theme} from "../../../../features/ThemeSlice";
 
 const Heading = () => {
+    const colors = useSelector(theme);
     return (
         <>
-            <div className="container-fluid border-bottom border-secondary bg-light">
+            <HeadingContainer className="container-fluid border-bottom border-secondary" color={colors.ColorTop}>
                 <div className="d-flex flex-lg-row flex-md-row flex-column justify-content-between py-3">
                     <div className="d-flex flex-row align-items-center justify-content-center mb-lg-0 mb-md-0 mb-3">
                         <h5>Product Design Team</h5>
@@ -20,9 +24,14 @@ const Heading = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </HeadingContainer>
         </>
     );
 }
+
+const HeadingContainer = styled.div`
+    background-color: ${props=>props.color};
+`;
+
 
 export default Heading;

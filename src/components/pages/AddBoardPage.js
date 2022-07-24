@@ -1,7 +1,15 @@
 import styled from "styled-components";
 import {Button, TextField} from "@mui/material";
+import {useDispatch} from "react-redux";
+import {CreateBoard} from "../../features/TasksSlice";
+import {v4 as uuid} from "uuid";
+import {useState} from "react";
+import {useNavigate} from "react-router";
 
-const AddBoardPage = () => {
+const AddBoardPage = (props) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [value, setValue] = useState("");
     return (
         <PageBack>
             <PageContent>
@@ -9,8 +17,17 @@ const AddBoardPage = () => {
                     <Title>Create New Board</Title>
                 </TitleContainer>
                 <FormInput>
-                    <TextField id="outlined-basic" label="Name:" variant="outlined" className={"inputs"}/>
-                    <Button variant="outlined">Create</Button>
+                    <TextField
+                        id="outlined-basic"
+                        label="Name:"
+                        variant="outlined"
+                        className={"inputs"}
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}/>
+                    <Button variant="outlined" onClick={() => {
+                        dispatch(CreateBoard({id: uuid(), name: value}));
+                        navigate("/", {replace: false});
+                    }}>Create</Button>
                 </FormInput>
             </PageContent>
         </PageBack>
@@ -33,16 +50,16 @@ const PageContent = styled.div`
   background-color: #ffffff;
   border-radius: 25px;
   width: 50%;
-  @media(max-width: 992px){
+  @media (max-width: 992px) {
     width: 70%;
   }
-  @media(max-width: 768px){
+  @media (max-width: 768px) {
     width: 80%;
   }
 `;
 
 const TitleContainer = styled.div`
-    background-color: #004BFF;
+  background-color: #004BFF;
   padding: 15px 25px;
   color: white;
   border-radius: 25px 25px 0 0;
@@ -50,10 +67,10 @@ const TitleContainer = styled.div`
 `;
 const Title = styled.h1`
   text-align: center;
-  @media(max-width: 992px){
+  @media (max-width: 992px) {
     font-size: 30px;
   }
-  @media(max-width: 576px){
+  @media (max-width: 576px) {
     font-size: 25px;
   }
 `;
@@ -67,23 +84,24 @@ const FormInput = styled.form`
 
   .inputs {
     width: 80%;
+
     fieldset {
       border-radius: 10px;
       overflow: hidden;
     }
   }
-  
-  button{
+
+  button {
     width: 80%;
     margin-top: 30px;
     margin-bottom: 50px;
     height: 50px;
     font-weight: bold;
   }
-  
-  
-  
-  
+
+
+
+
 `;
 
 export default AddBoardPage;

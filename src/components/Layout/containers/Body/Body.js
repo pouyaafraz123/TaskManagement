@@ -1,6 +1,6 @@
 import React from "react";
 import Top from './Top';
-import BodyContainer from './BodyContainer'
+import BodyContainer from './BodyContainer';
 
 const Body = () => {
     return (

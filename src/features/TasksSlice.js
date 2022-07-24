@@ -3,7 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 export const TasksSlice = createSlice({
     name: "tasks",
     initialState: {
-        taskBoard: localStorage.getItem("board") || {}
+        taskBoard: JSON.parse(localStorage.getItem("board")) || {}
     },
     reducers: {
         CreateBoard: (state, action) => {
@@ -59,7 +59,7 @@ export const {
 } = TasksSlice.actions;
 
 const Save = (boards) => {
-    localStorage.setItem("board",boards);
+    localStorage.setItem("board",JSON.stringify(boards));
 }
 
 export const boards = (state) => state.boards.taskBoard;

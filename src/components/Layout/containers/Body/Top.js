@@ -3,14 +3,15 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import styled from "styled-components";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {boards} from "../../../../features/TasksSlice";
-import {useParams} from "react-router";
+import {Select, selected} from "../../../../features/SelectedBoard";
+import {Link} from "react-router-dom";
 
 const Top = () => {
     const board = useSelector(boards);
-    const params = useParams();
-    console.log(params.id);
+    const select = useSelector(selected);
+    const dispatch = useDispatch();
     return (
         <>
             <DivContainer className="container-fluid">
@@ -26,19 +27,22 @@ const Top = () => {
                     </div>
                     <div
                         className="d-flex flex-lg-row flex-md-row flex-column align-items-center justify-content-center">
-                        <button className="btn btn-primary"><AddIcon/>&nbsp; New Item</button>
+                        <Link to={"/add-task-group"}
+                            className="btn btn-primary">
+                            <AddIcon/>&nbsp; New Item
+                        </Link>
                         <button className="btn btn-light border-secondary mx-2 my-lg-0 my-md-0 my-3 text-muted">
                             <FilterListIcon/>&nbsp; Filter
                         </button>
                         <div className="dropdown">
                             <button type="button" className="btn btn-light border-secondary text-muted dropdown-toggle"
                                     data-toggle="dropdown">
-                                Board{/* TODO OPEN WITH ROUT*/}
+                                {renderButton(board,select)}
                             </button>
                             <div className="dropdown-menu dropdown-menu-right text-center">
-                                {renderBoards(board)}
-                                <a className="dropdown-item" href="#">
-                                    &#43; New Board</a>
+                                {renderBoards(board,dispatch)}
+                                <Link className="dropdown-item" to="/add-board">
+                                    &#43; New Board</Link>
                             </div>
                         </div>
                     </div>
@@ -48,11 +52,22 @@ const Top = () => {
     );
 }
 
-const renderBoards = (board) => {
+function renderButton(board,select) {
+    if (!board||!board[select]) return <span>Select Board</span>;
+    else{
+        return board[select].name||<span>Select Board</span>
+    }
+}
+
+const renderBoards = (board,dispatch) => {
+    if (!board) return;
+
     const keys = Object.keys(board);
     return keys.map((item)=>{
         return (
-            <a className="dropdown-item" href="#">board[item].name</a>
+            <a className="dropdown-item" href="#" onClick={()=> {
+                dispatch(Select(board[item].id))
+            }}>{board[item].name}</a>
         );
     });
 }
