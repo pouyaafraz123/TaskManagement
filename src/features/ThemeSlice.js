@@ -4,7 +4,7 @@ import Theme from "../components/theme/Theme";
 export const ThemeSlice = createSlice({
     name: "theme",
     initialState: {
-        theme: /*JSON.parse(localStorage.getItem("theme")) ||*/ Theme.dark
+        theme: JSON.parse(localStorage.getItem("theme")) || Theme.light
     },
     reducers: {
         ToggleTheme: (state,action) => {
