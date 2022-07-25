@@ -5,7 +5,12 @@ const Theme = {
         ColorSecondary:"#004cff",
         ColorBadge:"rgba(0,255,46,0.07)",
         ColorTop:"#F8F9FA",
-        Color:"black"
+        Color:"black",
+        InputColor: 'white',
+        MutedColor: '#6c757d',
+        HoverColor: '#f8f9fa',
+        PopUpColor: 'white',
+        OptionColor: '#ccc',
     },
     dark:{
         theme:"dark",
@@ -13,7 +18,12 @@ const Theme = {
         ColorSecondary:"#001a57",
         ColorBadge:"rgba(0,255,46,0.07)",
         ColorTop:"#1a1a27",
-        Color:"white"
+        Color:"white" ,
+        InputColor: 'black' ,
+        MutedColor: 'white',
+        HoverColor: '#444',
+        PopUpColor: '#222',
+        OptionColor: '#000',
     }
 }
 
