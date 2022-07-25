@@ -11,6 +11,7 @@ const Theme = {
         HoverColor: '#f8f9fa',
         PopUpColor: 'white',
         OptionColor: '#ccc',
+        TogglerColor: '#555',
     },
     dark:{
         theme:"dark",
@@ -24,6 +25,7 @@ const Theme = {
         HoverColor: '#444',
         PopUpColor: '#222',
         OptionColor: '#000',
+        TogglerColor: '#000030',
     }
 }
 
