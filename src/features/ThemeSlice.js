@@ -4,12 +4,13 @@ import Theme from "../components/theme/Theme";
 export const ThemeSlice = createSlice({
     name: "theme",
     initialState: {
-        theme: JSON.parse(localStorage.getItem("theme")) || Theme.dark
+        theme: /*JSON.parse(localStorage.getItem("theme")) ||*/ Theme.dark
     },
     reducers: {
-        ToggleTheme: (state) => {
-            state.theme = state.theme===Theme.light?Theme.dark:Theme.light;
-            localStorage.setItem("theme",JSON.stringify(state.theme))
+        ToggleTheme: (state,action) => {
+            state.theme = action.payload;
+            console.log(action.payload)
+            localStorage.setItem("theme",JSON.stringify(action.payload));
         }
     }
 });

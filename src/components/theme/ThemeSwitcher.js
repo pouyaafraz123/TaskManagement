@@ -2,19 +2,28 @@ import React from 'react';
 import styled from 'styled-components'
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {theme} from "../../features/ThemeSlice";
+import {ToggleTheme} from "../../features/ThemeSlice";
+import Theme from "./Theme";
 
 const ThemeSwitcher = () => {
     const colors = useSelector(theme);
+    const dispatch = useDispatch();
     return (
-        <DivContainer back={colors.TogglerColor} style={{
+        <DivContainer
+            back={colors.TogglerColor}
+
+            style={{
             position: 'absolute',
             top: '14px',
             right: '10px'
         }} className="switch">
-            <input type="checkbox" className="checkbox" id="checkbox"/>
-            <label htmlFor="checkbox" className="label">
+            <input type="checkbox" className="checkbox" id="checkbox" checked={colors.theme==="light"}/>
+            <label onClick={()=> {
+                console.log(1)
+                dispatch(ToggleTheme(colors.theme==="light"?Theme.dark:Theme.light));
+            }} htmlFor="checkbox" className="label">
                 <i className="moon"><DarkModeIcon fontSize={"small"}/></i>
                 <i className='sun'><WbSunnyIcon fontSize={"small"}/> </i>
                 <div className='ball'></div>
