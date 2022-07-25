@@ -6,6 +6,7 @@ import {Route, Routes} from "react-router";
 import AddBoardPage from "../pages/AddBoardPage";
 import AddTaskGroup from "../pages/AddTaskGroup";
 import AddTask from "../pages/AddTask";
+import EditTaskPage from "../pages/EditTask";
 
 const Layout = () => {
 
@@ -19,6 +20,7 @@ const Layout = () => {
                     <Route element={<AddBoardPage/>} path={"/add-board"}/>
                     <Route element={<AddTaskGroup/>} path={"/add-task-group"}/>
                     <Route element={<AddTask/>} path={"/add-task/:id"}/>
+                    <Route element={<EditTaskPage/>} path={"/edit-task/:groupId/:id"}/>
                 </Routes>
             </BrowserRouter>
 

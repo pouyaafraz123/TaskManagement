@@ -6,13 +6,18 @@ import {useSelector} from "react-redux";
 import {boards} from "../../../../features/TasksSlice";
 import {selected} from "../../../../features/SelectedBoard";
 import {theme} from "../../../../features/ThemeSlice";
+import {useNavigate} from "react-router";
 const Task = (props) => {
     const board = useSelector(boards);
     const select = useSelector(selected);
     const colors = useSelector(theme);
+    const navigate = useNavigate();
+
     if (!board || !board[select] || !board[select][props.groupId])
         return "";
+
     const taskItems = Object.keys(board[select][props.groupId]);
+
     return taskItems.map((item) => {
         if (item === "name" || item === "id" || item === "boardId") {
             return "";
@@ -32,7 +37,9 @@ const Task = (props) => {
                         backgroundColor: colors.ColorPrimary,
                         padding: '15px',
                         borderRadius: '12px'
-                    }}>
+                    }}
+                     onClick={()=>navigate(`/edit-task/${props.groupId}/${item}`)}
+                >
                     <h6 className="card-title mb-2">
                         <strong>{task.title}</strong>
                     </h6>

@@ -27,6 +27,7 @@ export const TasksSlice = createSlice({
             Save(state.taskBoard);
         },
         EditTask: (state, action) => {
+            delete state.taskBoard[action.payload.boardId][action.payload.pGroup][action.payload.id];
             state.taskBoard[action.payload.boardId][action.payload.groupId][action.payload.id] = action.payload;
             Save(state.taskBoard);
         },
