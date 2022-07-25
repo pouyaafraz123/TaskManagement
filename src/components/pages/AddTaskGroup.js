@@ -6,6 +6,8 @@ import {v4 as uuid} from "uuid";
 import {useState} from "react";
 import {useNavigate} from "react-router";
 import {selected} from "../../features/SelectedBoard";
+import {theme} from "../../features/ThemeSlice";
+import CloseIcon from "@mui/icons-material/Close";
 
 const AddTaskGroup = () => {
     const dispatch = useDispatch();
@@ -14,24 +16,29 @@ const AddTaskGroup = () => {
     const [value, setValue] = useState("");
     return (
         <PageBack>
-            <PageContent>
-                <TitleContainer>
-                    <Title>Create New Task Group</Title>
+            <PageContent backTheme={colors.PopUpColor}>
+                <TitleContainer backTheme={colors.ColorSecondary} textTheme={colors.Color}>
+                    <div className="d-flex justify-content-between">
+                        <div></div>
+                        <Title>Create New Task Group</Title>
+                        <CloseIcon fontSize={"medium"}/>
+                    </div>
                 </TitleContainer>
-                <FormInput>
-                    <TextField
-                        id="outlined-basic"
-                        label="Name:"
-                        variant="outlined"
-                        className={"inputs"}
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}/>
+                <FormInput border={colors.Color}>
+                    <CssTextField textTheme={colors.Color}
+                                  id="outlined-basic"
+                                  label="Name:"
+                                  variant="outlined"
+                                  className={"inputs"}
+                                  value={value}
+                                  onChange={(e) => setValue(e.target.value)}/>
                     <Button variant="outlined" onClick={() => {
                         dispatch(CreateTaskGroup(
                             {
                                 boardId: select,
                                 id: uuid(),
-                                name: value}));
+                                name: value
+                            }));
                         navigate("/", {replace: false});
                         console.log(1)
                     }}>Create</Button>
@@ -54,7 +61,7 @@ const PageContent = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ffffff;
+  background-color: ${props => props.backTheme};
   border-radius: 25px;
   width: 50%;
   @media (max-width: 992px) {
@@ -66,9 +73,9 @@ const PageContent = styled.div`
 `;
 
 const TitleContainer = styled.div`
-  background-color: #004BFF;
+  background-color: ${props => props.backTheme};
   padding: 15px 25px;
-  color: white;
+  color: ${props => props.textTheme};
   border-radius: 25px 25px 0 0;
   font-size: 20px;
 `;
@@ -94,6 +101,7 @@ const FormInput = styled.form`
 
     fieldset {
       border-radius: 10px;
+      border-color: ${props => props.border} !important;
       overflow: hidden;
     }
   }
@@ -106,9 +114,18 @@ const FormInput = styled.form`
     font-weight: bold;
   }
 
-
-
-
 `;
+
+const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+        color: props => props.textTheme,
+    },
+    '.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
+        color: props => props.textTheme,
+    },
+    '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
+        color: props => props.textTheme,
+    }
+});
 
 export default AddTaskGroup;
