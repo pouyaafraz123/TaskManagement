@@ -27,6 +27,7 @@ const Top = (props) => {
                             </div>
                             <input type="search" name="search" id="search" placeholder={"Search Items . . ."}
                                    className="form-control border-left-0"
+                                   autoComplete={"off"}
                             onChange={(e)=>props.onSearchChange(e.target.value)}
                                    style={{backgroundColor: colors.InputColor, color: colors.Color}}/>
                         </div>
