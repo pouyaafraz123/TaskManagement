@@ -1,105 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/Logo.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" href="%PUBLIC_URL%/Logo.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
     <meta
-      name="description"
-      content="Task Management App"
+            name="description"
+            content="Task Management App Powered By Kamyab Tabani & Pouya Afraz"
     />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-<!--    <style>-->
-<!--      @font-face {-->
-<!--        font-family: iranyekan;-->
-<!--        font-style: normal;-->
-<!--        font-weight: bold;-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebboldfanum.eot');-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebboldfanum.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */-->
-<!--        url('fonts/iranyekan/woff/iranyekanwebboldfanum.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/-->
-<!--        url('fonts/iranyekan/ttf/iranyekanwebboldfanum.ttf') format('truetype');-->
-<!--      }-->
-
-<!--      @font-face {-->
-<!--        font-family: iranyekan;-->
-<!--        font-style: normal;-->
-<!--        font-weight: 100;-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebthinfanum.eot');-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebthinfanum.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */-->
-<!--        url('fonts/iranyekan/woff/iranyekanwebthinfanum.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/-->
-<!--        url('fonts/iranyekan/ttf/iranyekanwebthinfanum.ttf') format('truetype');-->
-<!--      }-->
-
-<!--      @font-face {-->
-<!--        font-family: iranyekan;-->
-<!--        font-style: normal;-->
-<!--        font-weight: 300;-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanweblightfanum.eot');-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanweblightfanum.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */-->
-<!--        url('fonts/iranyekan/woff/iranyekanweblightfanum.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/-->
-<!--        url('fonts/iranyekan/ttf/iranyekanweblightfanum.ttf') format('truetype');-->
-<!--      }-->
-
-<!--      @font-face {-->
-<!--        font-family: iranyekan;-->
-<!--        font-style: normal;-->
-<!--        font-weight: normal;-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebregularfanum.eot');-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebregularfanum.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */-->
-<!--        url('fonts/iranyekan/woff/iranyekanwebregularfanum.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/-->
-<!--        url('fonts/iranyekan/ttf/iranyekanwebregularfanum.ttf') format('truetype');-->
-<!--      }-->
-
-<!--      @font-face {-->
-<!--        font-family: iranyekan;-->
-<!--        font-style: normal;-->
-<!--        font-weight: 500;-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebmediumfanum.eot');-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebmediumfanum.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */-->
-<!--        url('fonts/iranyekan/woff/iranyekanwebmediumfanum.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/-->
-<!--        url('fonts/iranyekan/ttf/iranyekanwebmediumfanum.ttf') format('truetype');-->
-<!--      }-->
-
-<!--      @font-face {-->
-<!--        font-family: iranyekan;-->
-<!--        font-style: normal;-->
-<!--        font-weight: 800;-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebextraboldfanum.eot');-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebextraboldfanum.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */-->
-<!--        url('fonts/iranyekan/woff/iranyekanwebextraboldfanum.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/-->
-<!--        url('fonts/iranyekan/ttf/iranyekanwebextraboldfanum.ttf') format('truetype');-->
-<!--      }-->
-
-<!--      @font-face {-->
-<!--        font-family: iranyekan;-->
-<!--        font-style: normal;-->
-<!--        font-weight: 900;-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebblackfanum.eot');-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebblackfanum.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */-->
-<!--        url('fonts/iranyekan/woff/iranyekanwebblackfanum.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/-->
-<!--        url('fonts/iranyekan/ttf/iranyekanwebblackfanum.ttf') format('truetype');-->
-<!--      }-->
-
-<!--      @font-face {-->
-<!--        font-family: iranyekan;-->
-<!--        font-style: normal;-->
-<!--        font-weight: 950;-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebextrablackfanum.eot');-->
-<!--        src: url('fonts/iranyekan/eot/iranyekanwebextrablackfanum.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */-->
-<!--        url('fonts/iranyekan/woff/iranyekanwebextrablackfanum.woff') format('woff'),-->
-<!--          /* FF3.6+, IE9, Chrome6+, Saf5.1+*/-->
-<!--        url('fonts/iranyekan/ttf/iranyekanwebextrablackfanum.ttf') format('truetype');-->
-<!--      }-->
-
-<!--      *{-->
-<!--        font-family: iranyekan,sans-serif !important;-->
-<!--      }-->
-<!--    </style>-->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
     <title>Task Management App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+</body>
 </html>
