@@ -20,11 +20,11 @@ const AddTask = () => {
     return (
         <PageBack>
             <PageContent backTheme={colors.PopUpColor}>
-                <TitleContainer backTheme={colors.ColorSecondary} textTheme={colors.Color}>
+                <TitleContainer backTheme={colors.ColorSecondary} textTheme={"white"}>
                     <div className="d-flex justify-content-between">
                         <div></div>
                         <Title>Create New Task</Title>
-                        <CloseIcon fontSize={"medium"}/>
+                        <CloseIcon style={{cursor:"pointer"}} fontSize={"medium"} onClick={()=>navigate("/", {replace: false})}/>
                     </div>
                 </TitleContainer>
                 <FormInput border={colors.Color}>
@@ -131,13 +131,16 @@ const FormInput = styled.form`
 `;
 
 const CssTextField = styled(TextField)({
-    '& label.Mui-focused': {
+    '& label': {
         color: props => props.textTheme,
     },
     '.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
         color: props => props.textTheme,
     },
     '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
+        color: props => props.textTheme,
+    },
+    '.css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root':{
         color: props => props.textTheme,
     }
 });

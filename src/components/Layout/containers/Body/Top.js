@@ -27,18 +27,17 @@ const Top = (props) => {
                             </div>
                             <input type="search" name="search" id="search" placeholder={"Search Items . . ."}
                                    className="form-control border-left-0"
-                            onChange={(e)=>props.onSearchChange(e.target.value)}/>
-                                   className="form-control border-left-0"
+                            onChange={(e)=>props.onSearchChange(e.target.value)}
                                    style={{backgroundColor: colors.InputColor, color: colors.Color}}/>
                         </div>
                     </div>
                     <div
                         className="d-flex flex-lg-row flex-md-row flex-column align-items-center justify-content-center">
                         <Link to={"/add-task-group"}
-                              className="btn " style={{backgroundColor: colors.ColorSecondary , color: colors.Color}}>
+                              className="btn" style={{backgroundColor: colors.ColorSecondary , color: "white"}}>
                             <AddIcon/>&nbsp; New Item
                         </Link>
-                        <button className="btn border-secondary mx-2 my-lg-0 my-md-0 my-3" style={{backgroundColor: colors.InputColor , color: colors.Color}}>
+                        <button className="btn border-secondary mx-2 my-lg-0 my-md-0 my-3 disabled" style={{backgroundColor: colors.InputColor , color: colors.Color}}>
                             <FilterListIcon/>&nbsp; Filter
                         </button>
                         <div className="dropdown">

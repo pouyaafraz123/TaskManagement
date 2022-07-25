@@ -10,6 +10,7 @@ import {theme} from "../../features/ThemeSlice";
 import CloseIcon from "@mui/icons-material/Close";
 
 const AddTaskGroup = () => {
+    const colors = useSelector(theme);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const select = useSelector(selected);
@@ -17,11 +18,11 @@ const AddTaskGroup = () => {
     return (
         <PageBack>
             <PageContent backTheme={colors.PopUpColor}>
-                <TitleContainer backTheme={colors.ColorSecondary} textTheme={colors.Color}>
+                <TitleContainer backTheme={colors.ColorSecondary} textTheme={"white"}>
                     <div className="d-flex justify-content-between">
                         <div></div>
                         <Title>Create New Task Group</Title>
-                        <CloseIcon fontSize={"medium"}/>
+                        <div style={{cursor:"pointer"}}><CloseIcon fontSize={"medium"} onClick={()=>navigate("/", {replace: false})}/></div>
                     </div>
                 </TitleContainer>
                 <FormInput border={colors.Color}>
@@ -117,7 +118,7 @@ const FormInput = styled.form`
 `;
 
 const CssTextField = styled(TextField)({
-    '& label.Mui-focused': {
+    '& label': {
         color: props => props.textTheme,
     },
     '.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {

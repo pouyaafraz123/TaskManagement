@@ -6,7 +6,6 @@ import {useSelector} from "react-redux";
 import {boards} from "../../../../features/TasksSlice";
 import {selected} from "../../../../features/SelectedBoard";
 import {theme} from "../../../../features/ThemeSlice";
-import {motion} from "framer-motion";
 const Task = (props) => {
     const board = useSelector(boards);
     const select = useSelector(selected);
@@ -20,27 +19,19 @@ const Task = (props) => {
         }
 
         const task = board[select][props.groupId][item];
+        console.log(props.s)
         if (props.s||props.s!==""){
             if(!task.text.includes(props.s)||!task.title.includes(props.s)){
                 return "";
             }
         }
+
         return (
-            <motion.div
-                drag
-                dragConstraints={{
-                    top: -5000,
-                    left: -5000,
-                    right: 5000,
-                    bottom: 5000,
-                }}
-            >
                 <div className="mb-3" style={
                     {
                         backgroundColor: colors.ColorPrimary,
                         padding: '15px',
-                        borderRadius: '12px',
-                        zIndex: 2234
+                        borderRadius: '12px'
                     }}>
                     <h6 className="card-title mb-2">
                         <strong>{task.title}</strong>
@@ -73,7 +64,6 @@ const Task = (props) => {
                         </div>
                     </div>
                 </div>
-            </motion.div>
         );
     })
 }

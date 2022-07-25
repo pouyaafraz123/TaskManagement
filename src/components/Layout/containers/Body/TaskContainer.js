@@ -2,29 +2,31 @@ import React from "react";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import PendingIcon from '@mui/icons-material/Pending';
 import Task from "./Task";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {boards} from "../../../../features/TasksSlice";
 import {selected} from "../../../../features/SelectedBoard";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {theme} from "../../../../features/ThemeSlice";
+import {DeleteTaskGroup} from "../../../../features/TasksSlice";
 
 const TaskContainer = (props) => {
     const board = useSelector(boards);
     const select = useSelector(selected);
     const colors = useSelector(theme);
+    const dispatch = useDispatch();
     return (
         <>
             <div className="container-fluid">
                 <div className="row">
-                    {renderGroups(board, select,colors,props)}
+                    {renderGroups(board, select,colors,props,dispatch)}
                 </div>
             </div>
         </>
     );
 }
 
-const renderGroups = (board, select,colors,props) => {
+const renderGroups = (board, select,colors,props,dispatch) => {
     if (!board || !board[select]) return;
     const groups = board[select];
     const Keys = Object.keys(groups);
@@ -51,14 +53,19 @@ const renderGroups = (board, select,colors,props) => {
                                     {/*<div className="deleteBox">Delete</div>*/}
                                     <div className="deleteBTN">
                                         <PendingIcon className="text-muted"/>
-                                        <div className="deleteBox"><strong>Delete</strong></div>
+                                        <div
+                                            className="deleteBox"
+                                            onClick={()=>dispatch(DeleteTaskGroup({boardId:select,id:key}))}
+                                        >
+                                            <strong>Delete</strong>
+                                        </div>
                                     </div>
                                 </DeleteOption>
                             </div>
                         </div>
                     </Card>
                     <div className="card-body">
-                        <Task groupId={key}/>
+                        <Task groupId={key} s={props.s}/>
                     </div>
                 </Card>
             </div>
